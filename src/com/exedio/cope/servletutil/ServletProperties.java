@@ -25,7 +25,7 @@ import java.util.Enumeration;
 import javax.servlet.ServletContext;
 
 import com.exedio.cope.util.PrefixSource;
-import com.exedio.cope.util.Properties;
+import com.exedio.cope.util.Properties.Source;
 
 public final class ServletProperties
 {
@@ -34,7 +34,7 @@ public final class ServletProperties
 		// prevent instantiation
 	}
 
-	public static final Properties.Source create(final ServletContext context)
+	public static final Source create(final ServletContext context)
 	{
 		final String contextPath = context.getContextPath();
 		final String prefix;
@@ -47,7 +47,7 @@ public final class ServletProperties
 		else
 			prefix = contextPath + '.';
 
-		final Properties.Source initParam = PrefixSource.wrap(new Properties.Source(){
+		final Source initParam = PrefixSource.wrap(new Source(){
 					public String get(final String key)
 					{
 						return context.getInitParameter(key);
@@ -74,7 +74,7 @@ public final class ServletProperties
 				},
 				prefix);
 
-		return new Properties.Source(){
+		return new Source(){
 			public String get(final String key)
 			{
 				if("contextPath".equals(key))
