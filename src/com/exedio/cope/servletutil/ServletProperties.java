@@ -18,7 +18,9 @@
 
 package com.exedio.cope.servletutil;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Enumeration;
 
 import javax.servlet.ServletContext;
 
@@ -53,7 +55,10 @@ public final class ServletProperties
 
 					public Collection<String> keySet()
 					{
-						return null;
+						final ArrayList<String> result = new ArrayList<String>();
+						for(final Enumeration<?> e = context.getInitParameterNames(); e.hasMoreElements(); )
+							result.add((String)e.nextElement());
+						return result;
 					}
 
 					public String getDescription()
@@ -80,7 +85,10 @@ public final class ServletProperties
 
 			public Collection<String> keySet()
 			{
-				return null;
+				final ArrayList<String> result = new ArrayList<String>();
+				result.addAll(initParam.keySet());
+				result.add("contextPath");
+				return result;
 			}
 
 			public String getDescription()
