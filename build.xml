@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="cope util" default="build" basedir=".">
+<project name="cope servlet util" default="build" basedir=".">
 
 	<property file="local.properties" />
 	<property file="project.properties" />
@@ -51,10 +51,10 @@
 	<target name="jar" depends="compile">
 		<jar jarfile="build/exedio-cope-util.jar" basedir="build/classes/src" filesonly="true" duplicate="fail" strict="fail" level="9">
 			<manifest>
-				<attribute name="Specification-Title" value="exedio cope util"/>
+				<attribute name="Specification-Title" value="exedio cope servlet util"/>
 				<attribute name="Specification-Version" value="${build.tag}"/>
 				<attribute name="Specification-Vendor" value="exedio GmbH"/>
-				<attribute name="Implementation-Title" value="exedio cope util"/>
+				<attribute name="Implementation-Title" value="exedio cope servlet util"/>
 				<attribute name="Implementation-Version" value="${build.tag}"/>
 				<attribute name="Implementation-Vendor" value="exedio GmbH"/>
 			</manifest>
