@@ -7,4 +7,4 @@ omit bug fixes.
 The items are sorted inversely, i.e. latest items are on top
 
 --------------------------------------------------------------------------
-* ServletProperties supports keySet()
+* ServletSource supports keySet()

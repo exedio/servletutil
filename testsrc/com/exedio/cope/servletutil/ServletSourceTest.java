@@ -18,12 +18,12 @@
 
 package com.exedio.cope.servletutil;
 
-import static com.exedio.cope.servletutil.ServletProperties.create;
+import static com.exedio.cope.servletutil.ServletSource.create;
 import junit.framework.TestCase;
 
 import com.exedio.cope.util.Properties.Source;
 
-public class ServletPropertiesTest extends TestCase
+public class ServletSourceTest extends TestCase
 {
 	public void testIt()
 	{
