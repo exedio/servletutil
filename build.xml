@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="cope servlet util" default="build" basedir=".">
+<project name="cope servletutil" default="build" basedir=".">
 
 	<property file="local.properties" />
 	<property file="project.properties" />
@@ -54,10 +54,10 @@
 	<target name="jar" depends="compile">
 		<jar jarfile="build/exedio-cope-servletutil.jar" basedir="build/classes/src" filesonly="true" duplicate="fail" strict="fail" level="9">
 			<manifest>
-				<attribute name="Specification-Title" value="exedio cope servlet util"/>
+				<attribute name="Specification-Title" value="exedio cope servletutil"/>
 				<attribute name="Specification-Version" value="${build.tag}"/>
 				<attribute name="Specification-Vendor" value="exedio GmbH"/>
-				<attribute name="Implementation-Title" value="exedio cope servlet util"/>
+				<attribute name="Implementation-Title" value="exedio cope servletutil"/>
 				<attribute name="Implementation-Version" value="${build.tag}"/>
 				<attribute name="Implementation-Vendor" value="exedio GmbH"/>
 			</manifest>
@@ -93,9 +93,9 @@
 				splitindex="on"
 				failonerror="true"
 			>
-			<doctitle><![CDATA[COPE Utilities<br>API Specification]]></doctitle>
-			<header>exedio cope util</header>
-			<footer>exedio cope util</footer>
+			<doctitle><![CDATA[COPE Servlet Utilities<br>API Specification]]></doctitle>
+			<header>exedio cope servletutil</header>
+			<footer>exedio cope servletutil</footer>
 			<bottom><![CDATA[<small>Copyright &copy; 2004-2008 <a href="http://www.exedio.com/" target="_top">exedio</a> Gesellschaft f&uuml;r Softwareentwicklung mbH. All rights reserved.</small><br><font size="-3">${build.tag}</font>]]></bottom>
 			<package name="com.*" />
 			<classpath>
