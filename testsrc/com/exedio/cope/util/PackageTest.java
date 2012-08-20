@@ -22,39 +22,11 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import com.exedio.cope.util.annotation.AnnotationInheritanceTest;
-
 public class PackageTest extends TestCase
 {
 	public static Test suite()
 	{
 		final TestSuite suite = new TestSuite();
-		suite.addTestSuite(BeforeAndAfterTest.class);
-		suite.addTestSuite(EmptyJobContextTest.class);
-		suite.addTestSuite(ProxyJobContextTest.class);
-		suite.addTestSuite(JobContextsEmptyTest.class);
-		suite.addTestSuite(JobContextsIteratorTest.class);
-		suite.addTestSuite(InterruptersVainTest.class);
-		suite.addTestSuite(InterruptersIteratorTest.class);
-		suite.addTestSuite(InterrupterJobContextAdapterTest.class);
-		suite.addTestSuite(CastTest.class);
-		suite.addTestSuite(CharSetTest.class);
-		//suite.addTestSuite(CounterTest.class);
-		suite.addTestSuite(HexTest.class);
-		suite.addTestSuite(DayTest.class);
-		suite.addTestSuite(MessageDigestUtilTest.class);
-		suite.addTestSuite(PoolTest.class);
-		suite.addTestSuite(PoolCounterTest.class);
-		suite.addTestSuite(PropertiesTest.class);
-		suite.addTestSuite(EmptySourceTest.class);
-		suite.addTestSuite(SystemPropertySourceTest.class);
-		suite.addTestSuite(PropertiesSourceTest.class);
-		suite.addTestSuite(PrefixSourceTest.class);
-		suite.addTestSuite(SequenceCheckerTest.class);
-		suite.addTestSuite(XMLEncoderTest.class);
-		suite.addTestSuite(StrictFileTest.class);
-		suite.addTestSuite(SafeFileTest.class);
-		suite.addTestSuite(AnnotationInheritanceTest.class);
 		suite.addTestSuite(ServletPropertiesTest.class);
 		return suite;
 	}
