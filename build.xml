@@ -39,6 +39,7 @@
 			<classpath>
 				<pathelement location="build/classes/src" />
 				<pathelement location="build/classes/testsrc" />
+				<pathelement location="lib/servlet-api.jar" />
 				<pathelement location="lib/junit.jar" />
 				<pathelement location="lib/easymock.jar" />
 				<pathelement location="lib/cglib-nodep.jar" />

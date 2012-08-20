@@ -55,6 +55,7 @@ public class PackageTest extends TestCase
 		suite.addTestSuite(StrictFileTest.class);
 		suite.addTestSuite(SafeFileTest.class);
 		suite.addTestSuite(AnnotationInheritanceTest.class);
+		suite.addTestSuite(ServletPropertiesTest.class);
 		return suite;
 	}
 }
