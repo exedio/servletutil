@@ -18,7 +18,7 @@
 
 package com.exedio.cope.util;
 
-import static com.exedio.cops.ServletProperties.create;
+import static com.exedio.cope.util.ServletProperties.create;
 import junit.framework.TestCase;
 
 import com.exedio.cope.util.Properties.Source;
