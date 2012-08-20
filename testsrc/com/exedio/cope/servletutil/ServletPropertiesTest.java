@@ -16,9 +16,9 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-package com.exedio.cope.util;
+package com.exedio.cope.servletutil;
 
-import static com.exedio.cope.util.ServletProperties.create;
+import static com.exedio.cope.servletutil.ServletProperties.create;
 import junit.framework.TestCase;
 
 import com.exedio.cope.util.Properties.Source;
