@@ -49,7 +49,7 @@
 	<target name="test" depends="test.run" />
 	
 	<target name="jar" depends="compile">
-		<jar jarfile="build/exedio-cope-util.jar" basedir="build/classes/src" filesonly="true" duplicate="fail" strict="fail" level="9">
+		<jar jarfile="build/exedio-cope-servletutil.jar" basedir="build/classes/src" filesonly="true" duplicate="fail" strict="fail" level="9">
 			<manifest>
 				<attribute name="Specification-Title" value="exedio cope servlet util"/>
 				<attribute name="Specification-Version" value="${build.tag}"/>
@@ -63,7 +63,7 @@
 	
 	<target name="jar.src">
 		<mkdir dir="build" />
-		<zip destfile="build/exedio-cope-util-src.zip" filesonly="true" whenempty="fail" duplicate="fail" level="9">
+		<zip destfile="build/exedio-cope-servletutil-src.zip" filesonly="true" whenempty="fail" duplicate="fail" level="9">
 			<zipfileset dir="${basedir}/src">
 				<include name="**/*.java" />
 			</zipfileset>
@@ -125,9 +125,9 @@
 
 	<target name="jenkins" depends="all">
 		<copy todir="${basedir}/build/success">
-			<fileset file="${basedir}/build/exedio-cope-util.jar" />
-			<fileset file="${basedir}/build/exedio-cope-util-src.zip" />
-			<fileset file="${basedir}/exedio-cope-util-log.txt" />
+			<fileset file="${basedir}/build/exedio-cope-servletutil.jar" />
+			<fileset file="${basedir}/build/exedio-cope-servletutil-src.zip" />
+			<fileset file="${basedir}/exedio-cope-servletutil-log.txt" />
 		</copy>
 		<copy file="ivy.xml" tofile="build/success/ivy.xml" overwrite="true">
 			<filterset>
