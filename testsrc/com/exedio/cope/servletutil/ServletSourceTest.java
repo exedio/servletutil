@@ -19,11 +19,15 @@
 package com.exedio.cope.servletutil;
 
 import static com.exedio.cope.servletutil.ServletSource.create;
-import junit.framework.TestCase;
 
+import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.Vector;
+
+import com.exedio.cope.junit.CopeAssert;
 import com.exedio.cope.util.Properties.Source;
 
-public class ServletSourceTest extends TestCase
+public class ServletSourceTest extends CopeAssert
 {
 	public void testIt()
 	{
@@ -33,6 +37,7 @@ public class ServletSourceTest extends TestCase
 			assertEquals("v2", s.get("p2"));
 			assertFails(s, "p3", "testContextPath.p3");
 			assertEquals("/testContextPath", s.get("contextPath"));
+			assertEquals(list("p1", "p2", "contextPath"), s.keySet());
 			assertEquals("ServletContext '/testContextPath' (prefix testContextPath.)", s.getDescription());
 			assertEquals("ServletContext '/testContextPath' (prefix testContextPath.)", s.toString());
 		}
@@ -42,6 +47,7 @@ public class ServletSourceTest extends TestCase
 			assertEquals("v2", s.get("p2"));
 			assertFails(s, "p3", "root.p3");
 			assertEquals("", s.get("contextPath"));
+			assertEquals(list("p1", "p2", "contextPath"), s.keySet());
 			assertEquals("ServletContext '' (prefix root.)", s.getDescription());
 			assertEquals("ServletContext '' (prefix root.)", s.toString());
 		}
@@ -51,6 +57,7 @@ public class ServletSourceTest extends TestCase
 			assertEquals("v2", s.get("p2"));
 			assertFails(s, "p3", "ding.p3");
 			assertEquals("ding", s.get("contextPath"));
+			assertEquals(list("p1", "p2", "contextPath"), s.keySet());
 			assertEquals("ServletContext 'ding' (prefix ding.)", s.getDescription());
 			assertEquals("ServletContext 'ding' (prefix ding.)", s.toString());
 		}
@@ -60,6 +67,7 @@ public class ServletSourceTest extends TestCase
 			assertEquals("v2", s.get("p2"));
 			assertFails(s, "p3", "p3");
 			assertEquals(null, s.get("contextPath"));
+			assertEquals(list("p1", "p2", "top", "contextPath"), s.keySet());
 			assertEquals("ServletContext 'null'", s.getDescription());
 			assertEquals("ServletContext 'null'", s.toString());
 		}
@@ -98,6 +106,12 @@ public class ServletSourceTest extends TestCase
 				return "v2";
 			else
 				throw new IllegalArgumentException(name);
+		}
+
+		@Override
+		public Enumeration<String> getInitParameterNames()
+		{
+			return new Vector<String>(Arrays.asList(prefix+"p1", prefix+"p2", "top")).elements();
 		}
 
 		@Override
