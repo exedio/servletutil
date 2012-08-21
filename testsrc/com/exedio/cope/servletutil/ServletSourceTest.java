@@ -36,6 +36,7 @@ public class ServletSourceTest extends CopeAssert
 			assertEquals("v1", s.get("p1"));
 			assertEquals("v2", s.get("p2"));
 			assertFails(s, "p3", "testContextPath.p3");
+			assertFails(s, "top", "testContextPath.top");
 			assertEquals("/testContextPath", s.get("contextPath"));
 			assertEquals(list("p1", "p2", "contextPath"), s.keySet());
 			assertEquals("ServletContext '/testContextPath' (prefix testContextPath.)", s.getDescription());
@@ -46,6 +47,7 @@ public class ServletSourceTest extends CopeAssert
 			assertEquals("v1", s.get("p1"));
 			assertEquals("v2", s.get("p2"));
 			assertFails(s, "p3", "root.p3");
+			assertFails(s, "top", "root.top");
 			assertEquals("", s.get("contextPath"));
 			assertEquals(list("p1", "p2", "contextPath"), s.keySet());
 			assertEquals("ServletContext '' (prefix root.)", s.getDescription());
@@ -56,6 +58,7 @@ public class ServletSourceTest extends CopeAssert
 			assertEquals("v1", s.get("p1"));
 			assertEquals("v2", s.get("p2"));
 			assertFails(s, "p3", "ding.p3");
+			assertFails(s, "top", "ding.top");
 			assertEquals("ding", s.get("contextPath"));
 			assertEquals(list("p1", "p2", "contextPath"), s.keySet());
 			assertEquals("ServletContext 'ding' (prefix ding.)", s.getDescription());
@@ -66,6 +69,7 @@ public class ServletSourceTest extends CopeAssert
 			assertEquals("v1", s.get("p1"));
 			assertEquals("v2", s.get("p2"));
 			assertFails(s, "p3", "p3");
+			assertEquals("vtop", s.get("top"));
 			assertEquals(null, s.get("contextPath"));
 			assertEquals(list("p1", "p2", "top", "contextPath"), s.keySet());
 			assertEquals("ServletContext 'null'", s.getDescription());
@@ -104,6 +108,8 @@ public class ServletSourceTest extends CopeAssert
 				return "v1";
 			else if((prefix + "p2").equals(name))
 				return "v2";
+			else if("top".equals(name))
+				return "vtop";
 			else
 				throw new IllegalArgumentException(name);
 		}
