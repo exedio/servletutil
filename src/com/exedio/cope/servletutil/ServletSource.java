@@ -77,6 +77,12 @@ public final class ServletSource
 		return new Source(){
 			public String get(final String key)
 			{
+				// TODO use Sources#checkKey instead, once its available here
+				if(key==null)
+					throw new NullPointerException("key");
+				if(key.length()==0)
+					throw new IllegalArgumentException("key must not be empty");
+
 				if("contextPath".equals(key))
 					return contextPath;
 
