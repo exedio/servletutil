@@ -33,6 +33,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import com.exedio.cope.util.Properties;
+
 import junit.framework.TestCase;
 
 public abstract class CopeAssert extends TestCase
@@ -293,5 +295,28 @@ public abstract class CopeAssert extends TestCase
 	public static final void waitForKey()
 	{
 		waitForKey(null);
+	}
+
+	protected static void assertKey(final Properties.Source source)
+	{
+		try
+		{
+			source.get(null);
+			fail();
+		}
+		catch(final NullPointerException e)
+		{
+			assertEquals("key", e.getMessage());
+		}
+		try
+		{
+			source.get("");
+			fail();
+		}
+		catch(final IllegalArgumentException e)
+		{
+			assertEquals("key must not be empty", e.getMessage());
+		}
+
 	}
 }

@@ -33,6 +33,7 @@ public class ServletSourceTest extends CopeAssert
 	{
 		{
 			final Source s = create(new TestContext("/testContextPath", "testContextPath."));
+			assertKey(s);
 			assertEquals("v1", s.get("p1"));
 			assertEquals("v2", s.get("p2"));
 			assertFails(s, "p3", "testContextPath.p3");
@@ -44,6 +45,7 @@ public class ServletSourceTest extends CopeAssert
 		}
 		{
 			final Source s = create(new TestContext("", "root."));
+			assertKey(s);
 			assertEquals("v1", s.get("p1"));
 			assertEquals("v2", s.get("p2"));
 			assertFails(s, "p3", "root.p3");
@@ -55,6 +57,7 @@ public class ServletSourceTest extends CopeAssert
 		}
 		{
 			final Source s = create(new TestContext("ding", "ding."));
+			assertKey(s);
 			assertEquals("v1", s.get("p1"));
 			assertEquals("v2", s.get("p2"));
 			assertFails(s, "p3", "ding.p3");
@@ -66,6 +69,7 @@ public class ServletSourceTest extends CopeAssert
 		}
 		{
 			final Source s = create(new TestContext(null, ""));
+			assertKey(s);
 			assertEquals("v1", s.get("p1"));
 			assertEquals("v2", s.get("p2"));
 			assertFails(s, "p3", "p3");
