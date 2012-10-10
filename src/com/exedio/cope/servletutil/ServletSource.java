@@ -20,6 +20,7 @@ package com.exedio.cope.servletutil;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Enumeration;
 
 import javax.servlet.ServletContext;
@@ -94,7 +95,7 @@ public final class ServletSource
 				final ArrayList<String> result = new ArrayList<String>();
 				result.addAll(initParam.keySet());
 				result.add("contextPath");
-				return result;
+				return Collections.unmodifiableList(result);
 			}
 
 			public String getDescription()
