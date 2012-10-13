@@ -31,11 +31,14 @@ import java.util.Vector;
 import com.exedio.cope.junit.CopeAssert;
 import com.exedio.cope.util.Properties.Source;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 public class ServletSourceFileTest extends CopeAssert
 {
 	private File file;
 
 	@Override
+	@SuppressFBWarnings("RV_RETURN_VALUE_IGNORED_BAD_PRACTICE")
 	protected void tearDown() throws Exception
 	{
 		if(file!=null)
