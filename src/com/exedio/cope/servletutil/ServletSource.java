@@ -48,31 +48,7 @@ public final class ServletSource
 		else
 			prefix = contextPath + '.';
 
-		final Source initParam = PrefixSource.wrap(new Source(){
-					public String get(final String key)
-					{
-						return context.getInitParameter(key);
-					}
-
-					public Collection<String> keySet()
-					{
-						final ArrayList<String> result = new ArrayList<String>();
-						for(final Enumeration<?> e = context.getInitParameterNames(); e.hasMoreElements(); )
-							result.add((String)e.nextElement());
-						return result;
-					}
-
-					public String getDescription()
-					{
-						return toString();
-					}
-
-					@Override
-					public String toString()
-					{
-						return "ServletContext '" + contextPath + '\'';
-					}
-				},
+		final Source initParam = PrefixSource.wrap(new InitParameter(context),
 				prefix);
 
 		return new Source(){
@@ -109,5 +85,39 @@ public final class ServletSource
 				return initParam.toString();
 			}
 		};
+	}
+
+	private static final class InitParameter implements Source
+	{
+		private final ServletContext context;
+
+		InitParameter(final ServletContext context)
+		{
+			this.context = context;
+		}
+
+		public String get(final String key)
+		{
+			return context.getInitParameter(key);
+		}
+
+		public Collection<String> keySet()
+		{
+			final ArrayList<String> result = new ArrayList<String>();
+			for(final Enumeration<?> e = context.getInitParameterNames(); e.hasMoreElements(); )
+				result.add((String)e.nextElement());
+			return result;
+		}
+
+		public String getDescription()
+		{
+			return toString();
+		}
+
+		@Override
+		public String toString()
+		{
+			return "ServletContext '" + context.getContextPath() + '\'';
+		}
 	}
 }
