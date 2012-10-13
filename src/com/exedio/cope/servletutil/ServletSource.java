@@ -18,6 +18,7 @@
 
 package com.exedio.cope.servletutil;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -26,6 +27,7 @@ import java.util.Enumeration;
 import javax.servlet.ServletContext;
 
 import com.exedio.cope.util.PrefixSource;
+import com.exedio.cope.util.Properties;
 import com.exedio.cope.util.Properties.Source;
 
 public final class ServletSource
@@ -49,8 +51,16 @@ public final class ServletSource
 			prefix = contextPath + '.';
 
 		final Source initParam = PrefixSource.wrap(new InitParameter(context), prefix);
+		final Source keys;
+		{
+			final String file = initParam.get("com.exedio.cope.servletutil.ServletSource.propertiesFile");
+			keys =
+				file!=null
+				? Properties.getSource(new File(file))
+				: initParam;
+		}
 
-		return new ContextPath(contextPath, initParam);
+		return new ContextPath(contextPath, keys);
 	}
 
 	private static final class InitParameter implements Source

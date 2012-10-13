@@ -28,6 +28,7 @@ public class PackageTest extends TestCase
 	{
 		final TestSuite suite = new TestSuite();
 		suite.addTestSuite(ServletSourceTest.class);
+		suite.addTestSuite(ServletSourceFileTest.class);
 		return suite;
 	}
 }

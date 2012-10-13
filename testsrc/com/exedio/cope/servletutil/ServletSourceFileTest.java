@@ -20,81 +20,112 @@ package com.exedio.cope.servletutil;
 
 import static com.exedio.cope.servletutil.ServletSource.create;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.Properties;
 import java.util.Vector;
 
 import com.exedio.cope.junit.CopeAssert;
 import com.exedio.cope.util.Properties.Source;
 
-public class ServletSourceTest extends CopeAssert
+public class ServletSourceFileTest extends CopeAssert
 {
+	private File file;
+
+	@Override
+	protected void tearDown() throws Exception
+	{
+		if(file!=null)
+		{
+			file.delete();
+			file = null;
+		}
+
+		super.tearDown();
+	}
+
 	public void testNormal()
 	{
-		final Source s = create(new TestContext("/testContextPath", "testContextPath."));
+		final Source s = create(new TestContext("/testContextPath", "testContextPath.", file()));
 		assertKey(s);
 		assertEquals("v1", s.get("p1"));
 		assertEquals("v2", s.get("p2"));
-		assertFails(s, "p3", "testContextPath.p3");
-		assertFails(s, "top", "testContextPath.top");
+		assertEquals(null, s.get("p3"));
+		assertEquals(null, s.get("top"));
 		assertEquals("/testContextPath", s.get("contextPath"));
-		assertEqualsUnmodifiable(list("p1", "p2", "contextPath"), s.keySet());
-		assertEquals("ServletContext '/testContextPath' (prefix testContextPath.)", s.getDescription());
-		assertEquals("ServletContext '/testContextPath' (prefix testContextPath.)", s.toString());
+		assertContainsUnmodifiable("p1", "p2", "contextPath", s.keySet());
+		assertEquals(file.getAbsolutePath(), s.getDescription());
+		assertEquals(file.getAbsolutePath(), s.toString());
 	}
 
 	public void testRoot()
 	{
-		final Source s = create(new TestContext("", "root."));
+		final Source s = create(new TestContext("", "root.", file()));
 		assertKey(s);
 		assertEquals("v1", s.get("p1"));
 		assertEquals("v2", s.get("p2"));
-		assertFails(s, "p3", "root.p3");
-		assertFails(s, "top", "root.top");
+		assertEquals(null, s.get("p3"));
+		assertEquals(null, s.get("top"));
 		assertEquals("", s.get("contextPath"));
-		assertEqualsUnmodifiable(list("p1", "p2", "contextPath"), s.keySet());
-		assertEquals("ServletContext '' (prefix root.)", s.getDescription());
-		assertEquals("ServletContext '' (prefix root.)", s.toString());
+		assertContainsUnmodifiable("p1", "p2", "contextPath", s.keySet());
+		assertEquals(file.getAbsolutePath(), s.getDescription());
+		assertEquals(file.getAbsolutePath(), s.toString());
 	}
 
 	public void testWithoutSlash()
 	{
-		final Source s = create(new TestContext("ding", "ding."));
+		final Source s = create(new TestContext("ding", "ding.", file()));
 		assertKey(s);
 		assertEquals("v1", s.get("p1"));
 		assertEquals("v2", s.get("p2"));
-		assertFails(s, "p3", "ding.p3");
-		assertFails(s, "top", "ding.top");
+		assertEquals(null, s.get("p3"));
+		assertEquals(null, s.get("top"));
 		assertEquals("ding", s.get("contextPath"));
-		assertEqualsUnmodifiable(list("p1", "p2", "contextPath"), s.keySet());
-		assertEquals("ServletContext 'ding' (prefix ding.)", s.getDescription());
-		assertEquals("ServletContext 'ding' (prefix ding.)", s.toString());
+		assertContainsUnmodifiable("p1", "p2", "contextPath", s.keySet());
+		assertEquals(file.getAbsolutePath(), s.getDescription());
+		assertEquals(file.getAbsolutePath(), s.toString());
 	}
 
 	public void testNull()
 	{
-		final Source s = create(new TestContext(null, ""));
+		final Source s = create(new TestContext(null, "", file()));
 		assertKey(s);
 		assertEquals("v1", s.get("p1"));
 		assertEquals("v2", s.get("p2"));
-		assertFails(s, "p3", "p3");
-		assertEquals("vtop", s.get("top"));
+		assertEquals(null, s.get("p3"));
+		assertEquals(null, s.get("top"));
 		assertEquals(null, s.get("contextPath"));
-		assertEqualsUnmodifiable(list("p1", "p2", "top", "contextPath"), s.keySet());
-		assertEquals("ServletContext 'null'", s.getDescription());
-		assertEquals("ServletContext 'null'", s.toString());
+		assertContainsUnmodifiable("p1", "p2", "contextPath", s.keySet());
+		assertEquals(file.getAbsolutePath(), s.getDescription());
+		assertEquals(file.getAbsolutePath(), s.toString());
 	}
 
-	private static final void assertFails(final Source source, final String key, final String failureKey)
+	private File file()
 	{
+		assertNull(file);
+		final Properties props = new Properties();
+		props.setProperty("p1", "v1");
+		props.setProperty("p2", "v2");
 		try
 		{
-			source.get(key);
-			fail();
+			file = File.createTempFile(ServletSourceFileTest.class.getName(), ".properties");
+			final FileOutputStream out = new FileOutputStream(file);
+			try
+			{
+				props.store(out, null);
+			}
+			finally
+			{
+				out.close();
+			}
+			return file;
 		}
-		catch(final IllegalArgumentException e)
+		catch(final IOException e)
 		{
-			assertEquals(failureKey, e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -102,24 +133,20 @@ public class ServletSourceTest extends CopeAssert
 	{
 		private final String contextPath;
 		private final String prefix;
+		private final File file;
 
-		TestContext(final String contextPath, final String prefix)
+		TestContext(final String contextPath, final String prefix, final File file)
 		{
 			this.contextPath = contextPath;
 			this.prefix = prefix;
+			this.file = file;
 		}
 
 		@Override
 		public String getInitParameter(final String name)
 		{
-			if((prefix + "p1").equals(name))
-				return "v1";
-			else if((prefix + "p2").equals(name))
-				return "v2";
-			else if((prefix + "com.exedio.cope.servletutil.ServletSource.propertiesFile").equals(name))
-				return null;
-			else if("top".equals(name))
-				return "vtop";
+			if((prefix + "com.exedio.cope.servletutil.ServletSource.propertiesFile").equals(name))
+				return file.getAbsolutePath();
 			else
 				throw new IllegalArgumentException(name);
 		}
