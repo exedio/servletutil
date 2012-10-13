@@ -31,66 +31,58 @@ public class ServletSourceTest extends CopeAssert
 {
 	public void testNormal()
 	{
-		{
-			final Source s = create(new TestContext("/testContextPath", "testContextPath."));
-			assertKey(s);
-			assertEquals("v1", s.get("p1"));
-			assertEquals("v2", s.get("p2"));
-			assertFails(s, "p3", "testContextPath.p3");
-			assertFails(s, "top", "testContextPath.top");
-			assertEquals("/testContextPath", s.get("contextPath"));
-			assertEqualsUnmodifiable(list("p1", "p2", "contextPath"), s.keySet());
-			assertEquals("ServletContext '/testContextPath' (prefix testContextPath.)", s.getDescription());
-			assertEquals("ServletContext '/testContextPath' (prefix testContextPath.)", s.toString());
-		}
+		final Source s = create(new TestContext("/testContextPath", "testContextPath."));
+		assertKey(s);
+		assertEquals("v1", s.get("p1"));
+		assertEquals("v2", s.get("p2"));
+		assertFails(s, "p3", "testContextPath.p3");
+		assertFails(s, "top", "testContextPath.top");
+		assertEquals("/testContextPath", s.get("contextPath"));
+		assertEqualsUnmodifiable(list("p1", "p2", "contextPath"), s.keySet());
+		assertEquals("ServletContext '/testContextPath' (prefix testContextPath.)", s.getDescription());
+		assertEquals("ServletContext '/testContextPath' (prefix testContextPath.)", s.toString());
 	}
 
 	public void testRoot()
 	{
-		{
-			final Source s = create(new TestContext("", "root."));
-			assertKey(s);
-			assertEquals("v1", s.get("p1"));
-			assertEquals("v2", s.get("p2"));
-			assertFails(s, "p3", "root.p3");
-			assertFails(s, "top", "root.top");
-			assertEquals("", s.get("contextPath"));
-			assertEqualsUnmodifiable(list("p1", "p2", "contextPath"), s.keySet());
-			assertEquals("ServletContext '' (prefix root.)", s.getDescription());
-			assertEquals("ServletContext '' (prefix root.)", s.toString());
-		}
+		final Source s = create(new TestContext("", "root."));
+		assertKey(s);
+		assertEquals("v1", s.get("p1"));
+		assertEquals("v2", s.get("p2"));
+		assertFails(s, "p3", "root.p3");
+		assertFails(s, "top", "root.top");
+		assertEquals("", s.get("contextPath"));
+		assertEqualsUnmodifiable(list("p1", "p2", "contextPath"), s.keySet());
+		assertEquals("ServletContext '' (prefix root.)", s.getDescription());
+		assertEquals("ServletContext '' (prefix root.)", s.toString());
 	}
 
 	public void testWithoutSlash()
 	{
-		{
-			final Source s = create(new TestContext("ding", "ding."));
-			assertKey(s);
-			assertEquals("v1", s.get("p1"));
-			assertEquals("v2", s.get("p2"));
-			assertFails(s, "p3", "ding.p3");
-			assertFails(s, "top", "ding.top");
-			assertEquals("ding", s.get("contextPath"));
-			assertEqualsUnmodifiable(list("p1", "p2", "contextPath"), s.keySet());
-			assertEquals("ServletContext 'ding' (prefix ding.)", s.getDescription());
-			assertEquals("ServletContext 'ding' (prefix ding.)", s.toString());
-		}
+		final Source s = create(new TestContext("ding", "ding."));
+		assertKey(s);
+		assertEquals("v1", s.get("p1"));
+		assertEquals("v2", s.get("p2"));
+		assertFails(s, "p3", "ding.p3");
+		assertFails(s, "top", "ding.top");
+		assertEquals("ding", s.get("contextPath"));
+		assertEqualsUnmodifiable(list("p1", "p2", "contextPath"), s.keySet());
+		assertEquals("ServletContext 'ding' (prefix ding.)", s.getDescription());
+		assertEquals("ServletContext 'ding' (prefix ding.)", s.toString());
 	}
 
 	public void testNull()
 	{
-		{
-			final Source s = create(new TestContext(null, ""));
-			assertKey(s);
-			assertEquals("v1", s.get("p1"));
-			assertEquals("v2", s.get("p2"));
-			assertFails(s, "p3", "p3");
-			assertEquals("vtop", s.get("top"));
-			assertEquals(null, s.get("contextPath"));
-			assertEqualsUnmodifiable(list("p1", "p2", "top", "contextPath"), s.keySet());
-			assertEquals("ServletContext 'null'", s.getDescription());
-			assertEquals("ServletContext 'null'", s.toString());
-		}
+		final Source s = create(new TestContext(null, ""));
+		assertKey(s);
+		assertEquals("v1", s.get("p1"));
+		assertEquals("v2", s.get("p2"));
+		assertFails(s, "p3", "p3");
+		assertEquals("vtop", s.get("top"));
+		assertEquals(null, s.get("contextPath"));
+		assertEqualsUnmodifiable(list("p1", "p2", "top", "contextPath"), s.keySet());
+		assertEquals("ServletContext 'null'", s.getDescription());
+		assertEquals("ServletContext 'null'", s.toString());
 	}
 
 	private static final void assertFails(final Source source, final String key, final String failureKey)
