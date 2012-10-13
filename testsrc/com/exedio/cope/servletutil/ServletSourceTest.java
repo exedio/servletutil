@@ -29,7 +29,7 @@ import com.exedio.cope.util.Properties.Source;
 
 public class ServletSourceTest extends CopeAssert
 {
-	public void testIt()
+	public void testNormal()
 	{
 		{
 			final Source s = create(new TestContext("/testContextPath", "testContextPath."));
@@ -43,6 +43,10 @@ public class ServletSourceTest extends CopeAssert
 			assertEquals("ServletContext '/testContextPath' (prefix testContextPath.)", s.getDescription());
 			assertEquals("ServletContext '/testContextPath' (prefix testContextPath.)", s.toString());
 		}
+	}
+
+	public void testRoot()
+	{
 		{
 			final Source s = create(new TestContext("", "root."));
 			assertKey(s);
@@ -55,6 +59,10 @@ public class ServletSourceTest extends CopeAssert
 			assertEquals("ServletContext '' (prefix root.)", s.getDescription());
 			assertEquals("ServletContext '' (prefix root.)", s.toString());
 		}
+	}
+
+	public void testWithoutSlash()
+	{
 		{
 			final Source s = create(new TestContext("ding", "ding."));
 			assertKey(s);
@@ -67,6 +75,10 @@ public class ServletSourceTest extends CopeAssert
 			assertEquals("ServletContext 'ding' (prefix ding.)", s.getDescription());
 			assertEquals("ServletContext 'ding' (prefix ding.)", s.toString());
 		}
+	}
+
+	public void testNull()
+	{
 		{
 			final Source s = create(new TestContext(null, ""));
 			assertKey(s);
