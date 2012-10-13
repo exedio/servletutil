@@ -51,40 +51,7 @@ public final class ServletSource
 		final Source initParam = PrefixSource.wrap(new InitParameter(context),
 				prefix);
 
-		return new Source(){
-			public String get(final String key)
-			{
-				// TODO use Sources#checkKey instead, once its available here
-				if(key==null)
-					throw new NullPointerException("key");
-				if(key.length()==0)
-					throw new IllegalArgumentException("key must not be empty");
-
-				if("contextPath".equals(key))
-					return contextPath;
-
-				return initParam.get(key);
-			}
-
-			public Collection<String> keySet()
-			{
-				final ArrayList<String> result = new ArrayList<String>();
-				result.addAll(initParam.keySet());
-				result.add("contextPath");
-				return Collections.unmodifiableList(result);
-			}
-
-			public String getDescription()
-			{
-				return initParam.getDescription();
-			}
-
-			@Override
-			public String toString()
-			{
-				return initParam.toString();
-			}
-		};
+		return new ContextPath(contextPath, initParam);
 	}
 
 	private static final class InitParameter implements Source
@@ -118,6 +85,51 @@ public final class ServletSource
 		public String toString()
 		{
 			return "ServletContext '" + context.getContextPath() + '\'';
+		}
+	}
+
+	private static class ContextPath implements Source
+	{
+		private final String contextPath;
+		private final Source initParam;
+
+		ContextPath(final String contextPath, final Source initParam)
+		{
+			this.contextPath = contextPath;
+			this.initParam = initParam;
+		}
+
+		public String get(final String key)
+		{
+			// TODO use Sources#checkKey instead, once its available here
+			if(key==null)
+				throw new NullPointerException("key");
+			if(key.length()==0)
+				throw new IllegalArgumentException("key must not be empty");
+
+			if("contextPath".equals(key))
+				return contextPath;
+
+			return initParam.get(key);
+		}
+
+		public Collection<String> keySet()
+		{
+			final ArrayList<String> result = new ArrayList<String>();
+			result.addAll(initParam.keySet());
+			result.add("contextPath");
+			return Collections.unmodifiableList(result);
+		}
+
+		public String getDescription()
+		{
+			return initParam.getDescription();
+		}
+
+		@Override
+		public String toString()
+		{
+			return initParam.toString();
 		}
 	}
 }
