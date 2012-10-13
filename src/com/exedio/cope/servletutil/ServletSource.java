@@ -48,8 +48,7 @@ public final class ServletSource
 		else
 			prefix = contextPath + '.';
 
-		final Source initParam = PrefixSource.wrap(new InitParameter(context),
-				prefix);
+		final Source initParam = PrefixSource.wrap(new InitParameter(context), prefix);
 
 		return new ContextPath(contextPath, initParam);
 	}
