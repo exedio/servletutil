@@ -108,6 +108,8 @@ public final class ServletSource
 			this.initParam = initParam;
 		}
 
+		private static final String PATH = "contextPath";
+
 		public String get(final String key)
 		{
 			// TODO use Sources#checkKey instead, once its available here
@@ -116,7 +118,7 @@ public final class ServletSource
 			if(key.length()==0)
 				throw new IllegalArgumentException("key must not be empty");
 
-			if("contextPath".equals(key))
+			if(PATH.equals(key))
 				return contextPath;
 
 			return initParam.get(key);
@@ -126,7 +128,7 @@ public final class ServletSource
 		{
 			final ArrayList<String> result = new ArrayList<String>();
 			result.addAll(initParam.keySet());
-			result.add("contextPath");
+			result.add(PATH);
 			return Collections.unmodifiableList(result);
 		}
 
