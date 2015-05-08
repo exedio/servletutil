@@ -128,11 +128,6 @@ public abstract class CopeAssert extends TestCase
 		return Arrays.asList(o);
 	}
 
-	public static final <T> List<T> listg(final T... o)
-	{
-		return Arrays.asList(o);
-	}
-
 	public static final Map<Object, Object> map()
 	{
 		return Collections.<Object, Object>emptyMap();
