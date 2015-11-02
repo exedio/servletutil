@@ -88,6 +88,11 @@
 		<delete dir="api" />
 		<mkdir  dir="api" />
 
+		<condition property="api.doclint" value="-Xdoclint:all,-missing" else="-nosince"> <!-- nosince is just a dummy -->
+			<available classname="java.util.Optional" /> <!-- available since JDK 1.8 -->
+		</condition>
+		<echo message="doclint //${api.doclint}//" />
+
 		<javadoc
 				sourcepath="src"
 				destdir="api"
@@ -104,6 +109,7 @@
 			<footer>exedio cope servletutil</footer>
 			<bottom><![CDATA[<small>Copyright &copy; 2004-2008 <a href="http://www.exedio.com/" target="_top">exedio</a> Gesellschaft f&uuml;r Softwareentwicklung mbH. All rights reserved.</small><br><font size="-3">${build.tag}</font>]]></bottom>
 			<package name="com.*" />
+			<arg value="${api.doclint}" />
 			<classpath>
 				<pathelement location="lib/exedio-cope-util.jar" />
 				<pathelement location="lib/servlet-api.jar" />
