@@ -16,6 +16,10 @@
 				<include name="*-dist.tar.gz" />
 			</fileset>
 		</move>
+
+		<delete dir="../lib">
+			<include name="*" />
+		</delete>
 		
 		<copy overwrite="true" todir="../lib">
 			<fileset dir="artifacts/lib">

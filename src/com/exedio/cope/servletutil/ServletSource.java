@@ -18,17 +18,16 @@
 
 package com.exedio.cope.servletutil;
 
+import com.exedio.cope.util.PrefixSource;
+import com.exedio.cope.util.Properties.Source;
+import com.exedio.cope.util.Sources;
+
+import javax.servlet.ServletContext;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
-
-import javax.servlet.ServletContext;
-
-import com.exedio.cope.util.PrefixSource;
-import com.exedio.cope.util.Properties;
-import com.exedio.cope.util.Properties.Source;
 
 public final class ServletSource
 {
@@ -56,7 +55,7 @@ public final class ServletSource
 			final String file = initParam.get("com.exedio.cope.servletutil.ServletSource.propertiesFile");
 			keys =
 				file!=null
-				? Properties.getSource(new File(file))
+				? Sources.load(new File(file))
 				: initParam;
 		}
 
