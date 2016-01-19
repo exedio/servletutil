@@ -20,12 +20,11 @@ package com.exedio.cope.servletutil;
 
 import static com.exedio.cope.servletutil.ServletSource.create;
 
+import com.exedio.cope.junit.CopeAssert;
+import com.exedio.cope.util.Properties.Source;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.Vector;
-
-import com.exedio.cope.junit.CopeAssert;
-import com.exedio.cope.util.Properties.Source;
 
 public class ServletSourceTest extends CopeAssert
 {

@@ -21,13 +21,12 @@ package com.exedio.cope.servletutil;
 import com.exedio.cope.util.PrefixSource;
 import com.exedio.cope.util.Properties.Source;
 import com.exedio.cope.util.Sources;
-
-import javax.servlet.ServletContext;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
+import javax.servlet.ServletContext;
 
 public final class ServletSource
 {

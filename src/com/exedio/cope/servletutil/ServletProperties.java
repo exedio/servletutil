@@ -18,9 +18,8 @@
 
 package com.exedio.cope.servletutil;
 
-import javax.servlet.ServletContext;
-
 import com.exedio.cope.util.Properties.Source;
+import javax.servlet.ServletContext;
 
 /**
  * @deprecated Use {@link ServletSource} instead

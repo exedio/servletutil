@@ -20,6 +20,9 @@ package com.exedio.cope.servletutil;
 
 import static com.exedio.cope.servletutil.ServletSource.create;
 
+import com.exedio.cope.junit.CopeAssert;
+import com.exedio.cope.util.Properties.Source;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,11 +30,6 @@ import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Vector;
-
-import com.exedio.cope.junit.CopeAssert;
-import com.exedio.cope.util.Properties.Source;
-
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 public class ServletSourceFileTest extends CopeAssert
 {
