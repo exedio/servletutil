@@ -4,36 +4,36 @@
 
 	<property file="local.properties" />
 	<property file="project.properties" />
-	
+
 	<import>
 		<fileset dir="macros">
 			<include name="*.xml" />
 		</fileset>
 	</import>
-	
+
 	<target name="compile">
 		<compile srcdir="src">
 			<classpath>
 				<pathelement location="lib/exedio-cope-util.jar" />
-				<pathelement location="lib/servlet-api.jar" />
+				<pathelement location="lib/javax.servlet-api.jar" />
 				<pathelement location="lib/findbugs-annotations.jar" />
 			</classpath>
 		</compile>
 	</target>
-	
+
 	<target name="test.compile" depends="compile">
 		<compile srcdir="testsrc">
 			<classpath>
 				<pathelement location="build/classes/src" />
 				<pathelement location="lib/exedio-cope-util.jar" />
-				<pathelement location="lib/servlet-api.jar" />
+				<pathelement location="lib/javax.servlet-api.jar" />
 				<pathelement location="lib/findbugs-annotations.jar" />
 				<pathelement location="lib/junit.jar" />
 				<pathelement location="lib/easymock.jar" />
 			</classpath>
 		</compile>
 	</target>
-	
+
 	<target name="test.run" depends="test.compile">
 		<mkdir dir="build/testresults" />
 		<junit fork="yes"
@@ -45,7 +45,7 @@
 				<pathelement location="build/classes/src" />
 				<pathelement location="build/classes/testsrc" />
 				<pathelement location="lib/exedio-cope-util.jar" />
-				<pathelement location="lib/servlet-api.jar" />
+				<pathelement location="lib/javax.servlet-api.jar" />
 				<pathelement location="lib/junit.jar" />
 				<pathelement location="lib/easymock.jar" />
 				<pathelement location="lib/cglib-nodep.jar" />
@@ -54,9 +54,9 @@
 			<assertions><enable/></assertions>
 		</junit>
 	</target>
-	
+
 	<target name="test" depends="test.run" />
-	
+
 	<target name="jar" depends="compile">
 		<jar jarfile="build/exedio-cope-servletutil.jar" basedir="build/classes/src" filesonly="true" duplicate="fail" strict="fail" level="9">
 			<manifest>
@@ -69,7 +69,7 @@
 			</manifest>
 		</jar>
 	</target>
-	
+
 	<target name="jar.src">
 		<mkdir dir="build" />
 		<zip destfile="build/exedio-cope-servletutil-src.zip" filesonly="true" whenempty="fail" duplicate="fail" level="9">
@@ -78,7 +78,7 @@
 			</zipfileset>
 		</zip>
 	</target>
-	
+
 	<target name="clean">
 		<delete dir="build" />
 	</target>
@@ -112,12 +112,12 @@
 			<arg value="${api.doclint}" />
 			<classpath>
 				<pathelement location="lib/exedio-cope-util.jar" />
-				<pathelement location="lib/servlet-api.jar" />
+				<pathelement location="lib/javax.servlet-api.jar" />
 				<pathelement location="lib/findbugs-annotations.jar" />
 			</classpath>
 		</javadoc>
 	</target>
-	
+
 	<target name="findbugs" depends="compile, test.compile, findbugs.taskdef">
 		<findbugs
 					home="${basedir}/build/findbugs-home"
@@ -132,13 +132,13 @@
 			<class location="${basedir}/build/classes/testsrc" />
 			<auxclasspath>
 				<pathelement location="${basedir}/lib/exedio-cope-util.jar" />
-				<pathelement location="${basedir}/lib/servlet-api.jar" />
+				<pathelement location="${basedir}/lib/javax.servlet-api.jar" />
 				<pathelement location="${basedir}/lib/junit.jar" />
 			</auxclasspath>
 		</findbugs>
 	</target>
-	
-	
+
+
 	<target name="build" depends="compile, test, jar, api" />
 	<target name="all" depends="build, jar.src, findbugs" />
 
@@ -154,5 +154,5 @@
 			</filterset>
 		</copy>
 	</target>
-	
+
 </project>

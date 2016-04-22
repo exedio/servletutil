@@ -73,7 +73,7 @@
             <compilation-unit>
                 <package-root>src</package-root>
                 <package-root>testsrc</package-root>
-                <classpath mode="compile">lib/junit.jar</classpath>
+                <classpath mode="compile">lib/junit.jar:lib/javax.servlet-api.jar:javax.servlet-api-source.jar</classpath>
                 <source-level>1.5</source-level>
             </compilation-unit>
         </java-data>

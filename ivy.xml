@@ -2,7 +2,7 @@
 <ivy-module version="2.0"
 				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 				xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
-	<info 
+	<info
 			organisation="com.exedio"
 			module="copeservletutil"
 			revision="@BUILD_REVISION@">
@@ -22,7 +22,7 @@
 		<artifact name="exedio-cope-servletutil" conf="changelog" type="log" ext="txt" />
 	</publications>
 	<dependencies>
-		<dependency org="javax.servlet" name="servlet-api" rev="2.5" conf="runtime->default; build->sources" />
+		<dependency org="javax.servlet" name="javax.servlet-api" rev="3.0.1" conf="runtime->default; build->sources" />
 		<dependency org="com.exedio" name="copeutil" rev="483" conf="runtime->runtime; build->runtime,sources,changelog">
 			<exclude org="org.slf4j" name="slf4j-api" />
 		</dependency>

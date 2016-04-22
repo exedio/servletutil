@@ -21,10 +21,19 @@ package com.exedio.cope.servletutil;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Enumeration;
+import java.util.EventListener;
+import java.util.Map;
 import java.util.Set;
+import javax.servlet.Filter;
+import javax.servlet.FilterRegistration;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
+import javax.servlet.SessionCookieConfig;
+import javax.servlet.SessionTrackingMode;
+import javax.servlet.descriptor.JspConfigDescriptor;
 import junit.framework.AssertionFailedError;
 
 public class AssertionFailedServletContext implements ServletContext
@@ -44,7 +53,7 @@ public class AssertionFailedServletContext implements ServletContext
 		throw new AssertionFailedError();
 	}
 
-	public Enumeration<?> getAttributeNames()
+	public Enumeration<String> getAttributeNames()
 	{
 		throw new AssertionFailedError();
 	}
@@ -59,7 +68,7 @@ public class AssertionFailedServletContext implements ServletContext
 		throw new AssertionFailedError();
 	}
 
-	public Enumeration<?> getInitParameterNames()
+	public Enumeration<String> getInitParameterNames()
 	{
 		throw new AssertionFailedError();
 	}
@@ -104,7 +113,7 @@ public class AssertionFailedServletContext implements ServletContext
 		throw new AssertionFailedError();
 	}
 
-	public Set<?> getResourcePaths(final String arg0)
+	public Set<String> getResourcePaths(final String arg0)
 	{
 		throw new AssertionFailedError();
 	}
@@ -121,13 +130,13 @@ public class AssertionFailedServletContext implements ServletContext
 	}
 
 	@Deprecated
-	public Enumeration<?> getServletNames()
+	public Enumeration<String> getServletNames()
 	{
 		throw new AssertionFailedError();
 	}
 
 	@Deprecated
-	public Enumeration<?> getServlets()
+	public Enumeration<Servlet> getServlets()
 	{
 		throw new AssertionFailedError();
 	}
@@ -154,6 +163,136 @@ public class AssertionFailedServletContext implements ServletContext
 	}
 
 	public void setAttribute(final String arg0, final Object arg1)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public int getEffectiveMajorVersion()
+	{
+		throw new AssertionFailedError();
+	}
+
+	public int getEffectiveMinorVersion()
+	{
+		throw new AssertionFailedError();
+	}
+
+	public boolean setInitParameter(String string, String string1)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public ServletRegistration.Dynamic addServlet(String string, String string1)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public ServletRegistration.Dynamic addServlet(String string, Servlet srvlt)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public ServletRegistration.Dynamic addServlet(String string, Class<? extends Servlet> type)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public <T extends Servlet> T createServlet(Class<T> type) throws ServletException
+	{
+		throw new AssertionFailedError();
+	}
+
+	public ServletRegistration getServletRegistration(String string)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public Map<String, ? extends ServletRegistration> getServletRegistrations()
+	{
+		throw new AssertionFailedError();
+	}
+
+	public FilterRegistration.Dynamic addFilter(String string, String string1)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public FilterRegistration.Dynamic addFilter(String string, Filter filter)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public FilterRegistration.Dynamic addFilter(String string, Class<? extends Filter> type)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public <T extends Filter> T createFilter(Class<T> type) throws ServletException
+	{
+		throw new AssertionFailedError();
+	}
+
+	public FilterRegistration getFilterRegistration(String string)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public Map<String, ? extends FilterRegistration> getFilterRegistrations()
+	{
+		throw new AssertionFailedError();
+	}
+
+	public SessionCookieConfig getSessionCookieConfig()
+	{
+		throw new AssertionFailedError();
+	}
+
+	public void setSessionTrackingModes(Set<SessionTrackingMode> set)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public Set<SessionTrackingMode> getDefaultSessionTrackingModes()
+	{
+		throw new AssertionFailedError();
+	}
+
+	public Set<SessionTrackingMode> getEffectiveSessionTrackingModes()
+	{
+		throw new AssertionFailedError();
+	}
+
+	public void addListener(String string)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public <T extends EventListener> void addListener(T t)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public void addListener(Class<? extends EventListener> type)
+	{
+		throw new AssertionFailedError();
+	}
+
+	public <T extends EventListener> T createListener(Class<T> type) throws ServletException
+	{
+		throw new AssertionFailedError();
+	}
+
+	public JspConfigDescriptor getJspConfigDescriptor()
+	{
+		throw new AssertionFailedError();
+	}
+
+	public ClassLoader getClassLoader()
+	{
+		throw new AssertionFailedError();
+	}
+
+	public void declareRoles(String... strings)
 	{
 		throw new AssertionFailedError();
 	}
