@@ -29,7 +29,6 @@ import javax.servlet.FilterRegistration;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 import javax.servlet.SessionCookieConfig;
 import javax.servlet.SessionTrackingMode;
@@ -177,32 +176,32 @@ public class AssertionFailedServletContext implements ServletContext
 		throw new AssertionFailedError();
 	}
 
-	public boolean setInitParameter(String string, String string1)
+	public boolean setInitParameter(final String string, final String string1)
 	{
 		throw new AssertionFailedError();
 	}
 
-	public ServletRegistration.Dynamic addServlet(String string, String string1)
+	public ServletRegistration.Dynamic addServlet(final String string, final String string1)
 	{
 		throw new AssertionFailedError();
 	}
 
-	public ServletRegistration.Dynamic addServlet(String string, Servlet srvlt)
+	public ServletRegistration.Dynamic addServlet(final String string, final Servlet srvlt)
 	{
 		throw new AssertionFailedError();
 	}
 
-	public ServletRegistration.Dynamic addServlet(String string, Class<? extends Servlet> type)
+	public ServletRegistration.Dynamic addServlet(final String string, final Class<? extends Servlet> type)
 	{
 		throw new AssertionFailedError();
 	}
 
-	public <T extends Servlet> T createServlet(Class<T> type) throws ServletException
+	public <T extends Servlet> T createServlet(final Class<T> type)
 	{
 		throw new AssertionFailedError();
 	}
 
-	public ServletRegistration getServletRegistration(String string)
+	public ServletRegistration getServletRegistration(final String string)
 	{
 		throw new AssertionFailedError();
 	}
@@ -212,27 +211,27 @@ public class AssertionFailedServletContext implements ServletContext
 		throw new AssertionFailedError();
 	}
 
-	public FilterRegistration.Dynamic addFilter(String string, String string1)
+	public FilterRegistration.Dynamic addFilter(final String string, final String string1)
 	{
 		throw new AssertionFailedError();
 	}
 
-	public FilterRegistration.Dynamic addFilter(String string, Filter filter)
+	public FilterRegistration.Dynamic addFilter(final String string, final Filter filter)
 	{
 		throw new AssertionFailedError();
 	}
 
-	public FilterRegistration.Dynamic addFilter(String string, Class<? extends Filter> type)
+	public FilterRegistration.Dynamic addFilter(final String string, final Class<? extends Filter> type)
 	{
 		throw new AssertionFailedError();
 	}
 
-	public <T extends Filter> T createFilter(Class<T> type) throws ServletException
+	public <T extends Filter> T createFilter(final Class<T> type)
 	{
 		throw new AssertionFailedError();
 	}
 
-	public FilterRegistration getFilterRegistration(String string)
+	public FilterRegistration getFilterRegistration(final String string)
 	{
 		throw new AssertionFailedError();
 	}
@@ -247,7 +246,7 @@ public class AssertionFailedServletContext implements ServletContext
 		throw new AssertionFailedError();
 	}
 
-	public void setSessionTrackingModes(Set<SessionTrackingMode> set)
+	public void setSessionTrackingModes(final Set<SessionTrackingMode> set)
 	{
 		throw new AssertionFailedError();
 	}
@@ -262,22 +261,22 @@ public class AssertionFailedServletContext implements ServletContext
 		throw new AssertionFailedError();
 	}
 
-	public void addListener(String string)
+	public void addListener(final String string)
 	{
 		throw new AssertionFailedError();
 	}
 
-	public <T extends EventListener> void addListener(T t)
+	public <T extends EventListener> void addListener(final T t)
 	{
 		throw new AssertionFailedError();
 	}
 
-	public void addListener(Class<? extends EventListener> type)
+	public void addListener(final Class<? extends EventListener> type)
 	{
 		throw new AssertionFailedError();
 	}
 
-	public <T extends EventListener> T createListener(Class<T> type) throws ServletException
+	public <T extends EventListener> T createListener(final Class<T> type)
 	{
 		throw new AssertionFailedError();
 	}
@@ -292,7 +291,7 @@ public class AssertionFailedServletContext implements ServletContext
 		throw new AssertionFailedError();
 	}
 
-	public void declareRoles(String... strings)
+	public void declareRoles(final String... strings)
 	{
 		throw new AssertionFailedError();
 	}
