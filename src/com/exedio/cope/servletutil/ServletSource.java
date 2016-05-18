@@ -18,9 +18,11 @@
 
 package com.exedio.cope.servletutil;
 
+import static com.exedio.cope.util.Sources.checkKey;
+import static com.exedio.cope.util.Sources.load;
+
 import com.exedio.cope.util.PrefixSource;
 import com.exedio.cope.util.Properties.Source;
-import com.exedio.cope.util.Sources;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -54,7 +56,7 @@ public final class ServletSource
 			final String file = initParam.get("com.exedio.cope.servletutil.ServletSource.propertiesFile");
 			keys =
 				file!=null
-				? Sources.load(new File(file))
+				? load(new File(file))
 				: initParam;
 		}
 
@@ -110,7 +112,7 @@ public final class ServletSource
 
 		public String get(final String key)
 		{
-			Sources.checkKey(key);
+			checkKey(key);
 
 			if(PATH.equals(key))
 				return contextPath;
