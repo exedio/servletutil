@@ -37,260 +37,311 @@ import junit.framework.AssertionFailedError;
 
 public class AssertionFailedServletContext implements ServletContext
 {
+	@Override
 	public String getInitParameter(final String name)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public String getServletContextName()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public Object getAttribute(final String arg0)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public Enumeration<String> getAttributeNames()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public ServletContext getContext(final String arg0)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public String getContextPath()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public Enumeration<String> getInitParameterNames()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public int getMajorVersion()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public String getMimeType(final String arg0)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public int getMinorVersion()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public RequestDispatcher getNamedDispatcher(final String arg0)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public String getRealPath(final String arg0)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public RequestDispatcher getRequestDispatcher(final String arg0)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public URL getResource(final String arg0)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public InputStream getResourceAsStream(final String arg0)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public Set<String> getResourcePaths(final String arg0)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public String getServerInfo()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	@Deprecated
 	public Servlet getServlet(final String arg0)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	@Deprecated
 	public Enumeration<String> getServletNames()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	@Deprecated
 	public Enumeration<Servlet> getServlets()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public void log(final String arg0)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	@Deprecated
 	public void log(final Exception arg0, final String arg1)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public void log(final String arg0, final Throwable arg1)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public void removeAttribute(final String arg0)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public void setAttribute(final String arg0, final Object arg1)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public int getEffectiveMajorVersion()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public int getEffectiveMinorVersion()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public boolean setInitParameter(final String string, final String string1)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public ServletRegistration.Dynamic addServlet(final String string, final String string1)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public ServletRegistration.Dynamic addServlet(final String string, final Servlet srvlt)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public ServletRegistration.Dynamic addServlet(final String string, final Class<? extends Servlet> type)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public <T extends Servlet> T createServlet(final Class<T> type)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public ServletRegistration getServletRegistration(final String string)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public Map<String, ? extends ServletRegistration> getServletRegistrations()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public FilterRegistration.Dynamic addFilter(final String string, final String string1)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public FilterRegistration.Dynamic addFilter(final String string, final Filter filter)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public FilterRegistration.Dynamic addFilter(final String string, final Class<? extends Filter> type)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public <T extends Filter> T createFilter(final Class<T> type)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public FilterRegistration getFilterRegistration(final String string)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public Map<String, ? extends FilterRegistration> getFilterRegistrations()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public SessionCookieConfig getSessionCookieConfig()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public void setSessionTrackingModes(final Set<SessionTrackingMode> set)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public Set<SessionTrackingMode> getDefaultSessionTrackingModes()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public Set<SessionTrackingMode> getEffectiveSessionTrackingModes()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public void addListener(final String string)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public <T extends EventListener> void addListener(final T t)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public void addListener(final Class<? extends EventListener> type)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public <T extends EventListener> T createListener(final Class<T> type)
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public JspConfigDescriptor getJspConfigDescriptor()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public ClassLoader getClassLoader()
 	{
 		throw new AssertionFailedError();
 	}
 
+	@Override
 	public void declareRoles(final String... strings)
 	{
 		throw new AssertionFailedError();
