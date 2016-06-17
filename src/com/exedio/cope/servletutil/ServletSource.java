@@ -81,7 +81,7 @@ public final class ServletSource
 		@Override
 		public Collection<String> keySet()
 		{
-			final ArrayList<String> result = new ArrayList<String>();
+			final ArrayList<String> result = new ArrayList<>();
 			for(final Enumeration<?> e = context.getInitParameterNames(); e.hasMoreElements(); )
 				result.add((String)e.nextElement());
 			return result;
@@ -127,7 +127,7 @@ public final class ServletSource
 		@Override
 		public Collection<String> keySet()
 		{
-			final ArrayList<String> result = new ArrayList<String>();
+			final ArrayList<String> result = new ArrayList<>();
 			result.addAll(initParam.keySet());
 			result.add(PATH);
 			return Collections.unmodifiableList(result);

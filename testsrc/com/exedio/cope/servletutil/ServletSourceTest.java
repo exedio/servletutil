@@ -126,7 +126,7 @@ public class ServletSourceTest extends CopeAssert
 		@Override
 		public Enumeration<String> getInitParameterNames()
 		{
-			return new Vector<String>(Arrays.asList(prefix+"p1", prefix+"p2", "top")).elements();
+			return new Vector<>(Arrays.asList(prefix+"p1", prefix+"p2", "top")).elements();
 		}
 
 		@Override
