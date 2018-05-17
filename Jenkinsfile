@@ -89,13 +89,13 @@ timestamps
 						exclZero: false,
 						keepRecords: false,
 						group: 'Sizes',
-						title: 'exedio-cope-util.jar',
+						title: 'exedio-cope-servletutil.jar',
 						numBuilds: '1000',
 						style: 'line',
 						useDescr: false,
 						propertiesSeries: [
-							[ file: 'build/exedio-cope-util.jar-plot.properties',     label: 'exedio-cope-util.jar' ],
-							[ file: 'build/exedio-cope-util-src.zip-plot.properties', label: 'exedio-cope-util-src.zip' ],
+							[ file: 'build/exedio-cope-servletutil.jar-plot.properties',     label: 'exedio-cope-servletutil.jar' ],
+							[ file: 'build/exedio-cope-servletutil-src.zip-plot.properties', label: 'exedio-cope-servletutil-src.zip' ],
 						],
 				])
 			}

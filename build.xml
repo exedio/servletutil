@@ -68,6 +68,7 @@
 				<attribute name="Implementation-Vendor" value="exedio GmbH"/>
 			</manifest>
 		</jar>
+		<plot file="build/exedio-cope-servletutil.jar" />
 	</target>
 
 	<target name="jar.src">
@@ -77,6 +78,7 @@
 				<include name="**/*.java" />
 			</zipfileset>
 		</zip>
+		<plot file="build/exedio-cope-servletutil-src.zip" />
 	</target>
 
 	<target name="clean">
