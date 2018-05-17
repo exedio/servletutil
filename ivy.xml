@@ -23,7 +23,7 @@
 	</publications>
 	<dependencies>
 		<dependency org="javax.servlet" name="javax.servlet-api" rev="3.0.1" conf="runtime->default; build->sources" />
-		<dependency org="com.exedio" name="copeutil" rev="483" conf="runtime->runtime; build->runtime,sources,changelog">
+		<dependency org="com.exedio" name="copeutil" rev="807" conf="runtime->runtime; build->runtime,sources,changelog">
 			<exclude org="org.slf4j" name="slf4j-api" />
 		</dependency>
 		<dependency org="junit" name="junit" rev="4.4" conf="build->default" />

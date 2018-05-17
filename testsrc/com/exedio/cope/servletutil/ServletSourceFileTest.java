@@ -58,6 +58,7 @@ public class ServletSourceFileTest extends CopeAssert
 		assertEquals(null, s.get("top"));
 		assertEquals("/testContextPath", s.get("contextPath"));
 		assertContainsUnmodifiable("p1", "p2", "contextPath", s.keySet());
+		assertSame(s, s.reload());
 		assertEquals(file.getAbsolutePath(), s.getDescription());
 		assertEquals(file.getAbsolutePath(), s.toString());
 	}
@@ -72,6 +73,7 @@ public class ServletSourceFileTest extends CopeAssert
 		assertEquals(null, s.get("top"));
 		assertEquals("", s.get("contextPath"));
 		assertContainsUnmodifiable("p1", "p2", "contextPath", s.keySet());
+		assertSame(s, s.reload());
 		assertEquals(file.getAbsolutePath(), s.getDescription());
 		assertEquals(file.getAbsolutePath(), s.toString());
 	}
@@ -86,6 +88,7 @@ public class ServletSourceFileTest extends CopeAssert
 		assertEquals(null, s.get("top"));
 		assertEquals("ding", s.get("contextPath"));
 		assertContainsUnmodifiable("p1", "p2", "contextPath", s.keySet());
+		assertSame(s, s.reload());
 		assertEquals(file.getAbsolutePath(), s.getDescription());
 		assertEquals(file.getAbsolutePath(), s.toString());
 	}
@@ -100,6 +103,7 @@ public class ServletSourceFileTest extends CopeAssert
 		assertEquals(null, s.get("top"));
 		assertEquals(null, s.get("contextPath"));
 		assertContainsUnmodifiable("p1", "p2", "contextPath", s.keySet());
+		assertSame(s, s.reload());
 		assertEquals(file.getAbsolutePath(), s.getDescription());
 		assertEquals(file.getAbsolutePath(), s.toString());
 	}
