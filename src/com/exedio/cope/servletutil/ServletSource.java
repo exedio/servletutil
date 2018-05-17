@@ -20,6 +20,7 @@ package com.exedio.cope.servletutil;
 
 import static com.exedio.cope.util.Sources.checkKey;
 import static com.exedio.cope.util.Sources.load;
+import static com.exedio.cope.util.Sources.reloadable;
 
 import com.exedio.cope.util.PrefixSource;
 import com.exedio.cope.util.Properties.Source;
@@ -56,7 +57,7 @@ public final class ServletSource
 			final String file = initParam.get("com.exedio.cope.servletutil.ServletSource.propertiesFile");
 			keys =
 				file!=null
-				? load(new File(file))
+				? reloadable(() -> load(new File(file)))
 				: initParam;
 		}
 
@@ -130,6 +131,16 @@ public final class ServletSource
 			final ArrayList<String> result = new ArrayList<>(initParam.keySet());
 			result.add(PATH);
 			return Collections.unmodifiableList(result);
+		}
+
+		@Override
+		public Source reload()
+		{
+			final Source initParamReloaded = initParam.reload();
+			return
+					initParamReloaded==initParam
+					? this
+					: new ContextPath(contextPath, initParamReloaded);
 		}
 
 		@Override

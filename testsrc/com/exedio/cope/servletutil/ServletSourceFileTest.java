@@ -19,14 +19,18 @@
 package com.exedio.cope.servletutil;
 
 import static com.exedio.cope.servletutil.ServletSource.create;
+import static java.util.Locale.ENGLISH;
 
 import com.exedio.cope.junit.CopeAssert;
+import com.exedio.cope.util.Clock;
 import com.exedio.cope.util.Properties.Source;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Vector;
@@ -35,10 +39,25 @@ public class ServletSourceFileTest extends CopeAssert
 {
 	private File file;
 
+	private String reloadDate;
+
+	@Override
+	protected void setUp() throws Exception
+	{
+		super.setUp();
+
+		final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS z (Z)", ENGLISH);
+		final long reloadMillis = 5555555;
+		reloadDate = df.format(new Date(reloadMillis));
+		Clock.override(() -> reloadMillis);
+	}
+
 	@Override
 	@SuppressFBWarnings("RV_RETURN_VALUE_IGNORED_BAD_PRACTICE")
 	protected void tearDown() throws Exception
 	{
+		Clock.clearOverride();
+
 		if(file!=null)
 		{
 			file.delete();
@@ -58,9 +77,12 @@ public class ServletSourceFileTest extends CopeAssert
 		assertEquals(null, s.get("top"));
 		assertEquals("/testContextPath", s.get("contextPath"));
 		assertContainsUnmodifiable("p1", "p2", "contextPath", s.keySet());
-		assertSame(s, s.reload());
-		assertEquals(file.getAbsolutePath(), s.getDescription());
-		assertEquals(file.getAbsolutePath(), s.toString());
+		final Source r = s.reload();
+		assertNotSame(s, r);
+		assertEquals(file.getAbsolutePath() + "(" + reloadDate + ")", s.getDescription());
+		assertEquals(file.getAbsolutePath() + "(" + reloadDate + " reload 1)", r.getDescription());
+		assertEquals(file.getAbsolutePath() + "(reloadable)", s.toString());
+		assertEquals(file.getAbsolutePath() + "(reloadable)", r.toString());
 	}
 
 	public void testRoot()
@@ -73,9 +95,12 @@ public class ServletSourceFileTest extends CopeAssert
 		assertEquals(null, s.get("top"));
 		assertEquals("", s.get("contextPath"));
 		assertContainsUnmodifiable("p1", "p2", "contextPath", s.keySet());
-		assertSame(s, s.reload());
-		assertEquals(file.getAbsolutePath(), s.getDescription());
-		assertEquals(file.getAbsolutePath(), s.toString());
+		final Source r = s.reload();
+		assertNotSame(s, r);
+		assertEquals(file.getAbsolutePath() + "(" + reloadDate + ")", s.getDescription());
+		assertEquals(file.getAbsolutePath() + "(" + reloadDate + " reload 1)", r.getDescription());
+		assertEquals(file.getAbsolutePath() + "(reloadable)", s.toString());
+		assertEquals(file.getAbsolutePath() + "(reloadable)", r.toString());
 	}
 
 	public void testWithoutSlash()
@@ -88,9 +113,12 @@ public class ServletSourceFileTest extends CopeAssert
 		assertEquals(null, s.get("top"));
 		assertEquals("ding", s.get("contextPath"));
 		assertContainsUnmodifiable("p1", "p2", "contextPath", s.keySet());
-		assertSame(s, s.reload());
-		assertEquals(file.getAbsolutePath(), s.getDescription());
-		assertEquals(file.getAbsolutePath(), s.toString());
+		final Source r = s.reload();
+		assertNotSame(s, r);
+		assertEquals(file.getAbsolutePath() + "(" + reloadDate + ")", s.getDescription());
+		assertEquals(file.getAbsolutePath() + "(" + reloadDate + " reload 1)", r.getDescription());
+		assertEquals(file.getAbsolutePath() + "(reloadable)", s.toString());
+		assertEquals(file.getAbsolutePath() + "(reloadable)", r.toString());
 	}
 
 	public void testNull()
@@ -103,9 +131,12 @@ public class ServletSourceFileTest extends CopeAssert
 		assertEquals(null, s.get("top"));
 		assertEquals(null, s.get("contextPath"));
 		assertContainsUnmodifiable("p1", "p2", "contextPath", s.keySet());
-		assertSame(s, s.reload());
-		assertEquals(file.getAbsolutePath(), s.getDescription());
-		assertEquals(file.getAbsolutePath(), s.toString());
+		final Source r = s.reload();
+		assertNotSame(s, r);
+		assertEquals(file.getAbsolutePath() + "(" + reloadDate + ")", s.getDescription());
+		assertEquals(file.getAbsolutePath() + "(" + reloadDate + " reload 1)", r.getDescription());
+		assertEquals(file.getAbsolutePath() + "(reloadable)", s.toString());
+		assertEquals(file.getAbsolutePath() + "(reloadable)", r.toString());
 	}
 
 	private File file()
