@@ -19,16 +19,9 @@
 package com.exedio.cope.junit;
 
 import com.exedio.cope.util.Properties;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -225,69 +218,6 @@ public abstract class CopeAssert extends TestCase
 		assertUnmodifiable(actual.values());
 		assertUnmodifiable(actual.entrySet());
 		assertEquals(expected, actual);
-	}
-
-	private static final String DATE_FORMAT_FULL = "dd.MM.yyyy HH:mm:ss.SSS";
-
-	public static final void assertWithin(final Date expectedBefore, final Date expectedAfter, final Date actual)
-	{
-		final SimpleDateFormat df = new SimpleDateFormat(DATE_FORMAT_FULL);
-		final String message =
-			"expected date within " + df.format(expectedBefore) +
-			" and " + df.format(expectedAfter) +
-			", but was " + df.format(actual);
-
-		assertTrue(message, !expectedBefore.after(actual));
-		assertTrue(message, !expectedAfter.before(actual));
-	}
-
-	@SuppressWarnings("unchecked")
-	public static final <S> S reserialize(final S value, final int maxSize)
-	{
-		if(value==null)
-			throw new NullPointerException();
-
-		try
-		{
-			final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			final ObjectOutputStream oos = new ObjectOutputStream(bos);
-			oos.writeObject(value);
-			oos.close();
-
-			assertTrue(String.valueOf(bos.size()), bos.size()<maxSize);
-
-			final ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bos.toByteArray()));
-			final Object result = ois.readObject();
-			ois.close();
-			return (S)result;
-		}
-		catch(final IOException e)
-		{
-			throw new RuntimeException(e);
-		}
-		catch(final ClassNotFoundException e)
-		{
-			throw new RuntimeException(e);
-		}
-	}
-
-	public static final <R> R waitForKey(final R o)
-	{
-		System.out.println("WAITING FOR KEY");
-		try
-		{
-			System.in.read();
-		}
-		catch(final IOException e)
-		{
-			throw new RuntimeException(e);
-		}
-		return o;
-	}
-
-	public static final void waitForKey()
-	{
-		waitForKey(null);
 	}
 
 	protected static void assertKey(final Properties.Source source)
