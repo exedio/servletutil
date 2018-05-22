@@ -84,7 +84,7 @@ public class ServletSourceTest extends CopeAssert
 		assertEquals("ServletContext 'null'", s.toString());
 	}
 
-	private static final void assertFails(final Source source, final String key, final String failureKey)
+	private static void assertFails(final Source source, final String key, final String failureKey)
 	{
 		try
 		{
