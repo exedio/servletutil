@@ -43,7 +43,7 @@ public final class ServletSource
 		final String prefix;
 		if(contextPath==null)
 			prefix = null;
-		else if("".equals(contextPath))
+		else if(contextPath.isEmpty())
 			prefix = "root.";
 		else if(contextPath.startsWith("/"))
 			prefix = contextPath.substring(1) + '.';
