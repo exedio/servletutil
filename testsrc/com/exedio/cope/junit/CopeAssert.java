@@ -144,13 +144,13 @@ public abstract class CopeAssert extends TestCase
 			c.add((T)null);
 			fail("should have thrown UnsupportedOperationException");
 		}
-		catch(final UnsupportedOperationException e) {/*OK*/}
+		catch(final UnsupportedOperationException ignored) {/*OK*/}
 		try
 		{
 			c.addAll(Collections.singleton((T)null));
 			fail("should have thrown UnsupportedOperationException");
 		}
-		catch(final UnsupportedOperationException e) {/*OK*/}
+		catch(final UnsupportedOperationException ignored) {/*OK*/}
 
 		if(!c.isEmpty())
 		{
@@ -160,25 +160,25 @@ public abstract class CopeAssert extends TestCase
 				c.clear();
 				fail("should have thrown UnsupportedOperationException");
 			}
-			catch(final UnsupportedOperationException e) {/*OK*/}
+			catch(final UnsupportedOperationException ignored) {/*OK*/}
 			try
 			{
 				c.remove(o);
 				fail("should have thrown UnsupportedOperationException");
 			}
-			catch(final UnsupportedOperationException e) {/*OK*/}
+			catch(final UnsupportedOperationException ignored) {/*OK*/}
 			try
 			{
 				c.removeAll(Collections.singleton(o));
 				fail("should have thrown UnsupportedOperationException");
 			}
-			catch(final UnsupportedOperationException e) {/*OK*/}
+			catch(final UnsupportedOperationException ignored) {/*OK*/}
 			try
 			{
 				c.retainAll(Collections.EMPTY_LIST);
 				fail("should have thrown UnsupportedOperationException");
 			}
-			catch(final UnsupportedOperationException e) {/*OK*/}
+			catch(final UnsupportedOperationException ignored) {/*OK*/}
 
 			final Iterator<?> iterator = c.iterator();
 			try
@@ -187,7 +187,7 @@ public abstract class CopeAssert extends TestCase
 				iterator.remove();
 				fail("should have thrown UnsupportedOperationException");
 			}
-			catch(final UnsupportedOperationException e) {/*OK*/}
+			catch(final UnsupportedOperationException ignored) {/*OK*/}
 		}
 
 		if(c instanceof List<?>)
@@ -201,7 +201,7 @@ public abstract class CopeAssert extends TestCase
 					l.set(0, null);
 					fail("should have thrown UnsupportedOperationException");
 				}
-				catch(final UnsupportedOperationException e) {/*OK*/}
+				catch(final UnsupportedOperationException ignored) {/*OK*/}
 			}
 		}
 	}
