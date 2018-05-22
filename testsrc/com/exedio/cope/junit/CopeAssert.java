@@ -175,7 +175,7 @@ public abstract class CopeAssert extends TestCase
 			catch(final UnsupportedOperationException ignored) {/*OK*/}
 			try
 			{
-				c.retainAll(Collections.EMPTY_LIST);
+				c.retainAll(Collections.emptyList());
 				fail("should have thrown UnsupportedOperationException");
 			}
 			catch(final UnsupportedOperationException ignored) {/*OK*/}
