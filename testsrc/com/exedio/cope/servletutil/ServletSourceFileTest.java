@@ -113,14 +113,9 @@ public class ServletSourceFileTest extends CopeAssert
 		try
 		{
 			file = File.createTempFile(ServletSourceFileTest.class.getName(), ".properties");
-			final FileOutputStream out = new FileOutputStream(file);
-			try
+			try(FileOutputStream out = new FileOutputStream(file))
 			{
 				props.store(out, null);
-			}
-			finally
-			{
-				out.close();
 			}
 			return file;
 		}
