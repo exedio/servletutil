@@ -150,6 +150,7 @@ public class ServletSourceFileTest extends CopeAssert
 		@Override
 		public Enumeration<String> getInitParameterNames()
 		{
+			//noinspection UseOfObsoleteCollectionType
 			return new Vector<>(Arrays.asList(prefix+"p1", prefix+"p2", "top")).elements();
 		}
 
