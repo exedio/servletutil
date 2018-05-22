@@ -37,7 +37,7 @@ public final class ServletSource
 		// prevent instantiation
 	}
 
-	public static final Source create(final ServletContext context)
+	public static Source create(final ServletContext context)
 	{
 		final String contextPath = context.getContextPath();
 		final String prefix;

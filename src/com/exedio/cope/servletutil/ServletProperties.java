@@ -36,7 +36,7 @@ public final class ServletProperties
 	 * @deprecated Use {@link ServletSource#create(ServletContext)} instead
 	 */
 	@Deprecated
-	public static final Source create(final ServletContext context)
+	public static Source create(final ServletContext context)
 	{
 		return ServletSource.create(context);
 	}
