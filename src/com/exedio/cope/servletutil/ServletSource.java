@@ -24,6 +24,7 @@ import static com.exedio.cope.util.Sources.reloadable;
 
 import com.exedio.cope.util.PrefixSource;
 import com.exedio.cope.util.Properties.Source;
+import com.exedio.cope.util.ProxyPropertiesSource;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -101,15 +102,14 @@ public final class ServletSource
 		}
 	}
 
-	private static class ContextPath implements Source
+	private static class ContextPath extends ProxyPropertiesSource
 	{
 		private final String contextPath;
-		private final Source initParam;
 
 		ContextPath(final String contextPath, final Source initParam)
 		{
+			super(initParam);
 			this.contextPath = contextPath;
-			this.initParam = initParam;
 		}
 
 		private static final String KEY = "contextPath";
@@ -122,7 +122,7 @@ public final class ServletSource
 			if(KEY.equals(key))
 				return contextPath;
 
-			return initParam.get(key);
+			return super.get(key);
 		}
 
 		@Override
@@ -130,30 +130,14 @@ public final class ServletSource
 		{
 			final ArrayList<String> result = new ArrayList<>();
 			result.add(KEY);
-			result.addAll(initParam.keySet());
+			result.addAll(super.keySet());
 			return Collections.unmodifiableList(result);
 		}
 
 		@Override
-		public Source reload()
+		protected ContextPath reload(final Source reloadedTarget)
 		{
-			final Source initParamReloaded = initParam.reload();
-			return
-					initParamReloaded==initParam
-					? this
-					: new ContextPath(contextPath, initParamReloaded);
-		}
-
-		@Override
-		public String getDescription()
-		{
-			return initParam.getDescription();
-		}
-
-		@Override
-		public String toString()
-		{
-			return initParam.toString();
+			return new ContextPath(contextPath, reloadedTarget);
 		}
 	}
 }
