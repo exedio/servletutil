@@ -128,8 +128,9 @@ public final class ServletSource
 		@Override
 		public Collection<String> keySet()
 		{
-			final ArrayList<String> result = new ArrayList<>(initParam.keySet());
+			final ArrayList<String> result = new ArrayList<>();
 			result.add(KEY);
+			result.addAll(initParam.keySet());
 			return Collections.unmodifiableList(result);
 		}
 
