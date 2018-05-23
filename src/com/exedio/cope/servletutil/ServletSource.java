@@ -112,14 +112,14 @@ public final class ServletSource
 			this.initParam = initParam;
 		}
 
-		private static final String PATH = "contextPath";
+		private static final String KEY = "contextPath";
 
 		@Override
 		public String get(final String key)
 		{
 			checkKey(key);
 
-			if(PATH.equals(key))
+			if(KEY.equals(key))
 				return contextPath;
 
 			return initParam.get(key);
@@ -129,7 +129,7 @@ public final class ServletSource
 		public Collection<String> keySet()
 		{
 			final ArrayList<String> result = new ArrayList<>(initParam.keySet());
-			result.add(PATH);
+			result.add(KEY);
 			return Collections.unmodifiableList(result);
 		}
 
