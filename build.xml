@@ -105,7 +105,7 @@
 			<doctitle><![CDATA[COPE Servlet Utilities<br>API Specification]]></doctitle>
 			<header>exedio cope servletutil</header>
 			<footer>exedio cope servletutil</footer>
-			<bottom><![CDATA[<small>Copyright &copy; 2004-2008 <a href="http://www.exedio.com/" target="_top">exedio</a> Gesellschaft f&uuml;r Softwareentwicklung mbH. All rights reserved.</small><br><font size="-3">${build.tag}</font>]]></bottom>
+			<bottom><![CDATA[<small>Copyright &copy; 2004-2008 <a href="https://www.exedio.com/" target="_top">exedio</a> Gesellschaft f&uuml;r Softwareentwicklung mbH. All rights reserved.</small><br><font size="-3">${build.tag}</font>]]></bottom>
 			<package name="com.*" />
 			<arg value="-Xdoclint:all,-missing" />
 			<classpath>
